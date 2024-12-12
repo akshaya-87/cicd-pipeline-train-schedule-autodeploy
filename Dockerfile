@@ -7,14 +7,15 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-# Install any needed packages specified in requirements.txt
+# Install any dependencies required by the application
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 5000 available to the world outside this container
+# Make port 5000 available to the world outside the container
 EXPOSE 5000
 
 # Define environment variable
-ENV NAME World
+ENV FLASK_APP=main.py
 
-# Run app.py when the container launches
-CMD ["python", "app/main.py"]
+# Run the application
+CMD ["python", "main.py"]
+
